@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>確認画面</title>
+</head>
+<body>
+
+<h2>確認画面</h2>
+
+<form th:action="@{/cansel/{seatId}(seatId=*{seatId})}" th:object="${SeatDto}" method="post">
+
+	
+<span th:text="${seatId} + ' 番をキャンセルしますか？'"></span>
+<input type="hidden" th:field="*{seatId}" name="seatId"><br>	
+<input type="hidden" th:field="*{seatNum}" name="seatNum">
+<input type="hidden" th:field="*{reserve}" name="reserve">
+<input type="hidden" th:field="*{userId}" name="userId">
+<input type="hidden" th:field="*{dateTime}" name="dateTime">
+
+<br><input type="submit" value="キャンセル"><br><br>
+</form>
+<a href="/reserve">一覧に戻る</a>
+
+</body>
+</html>
+</html>

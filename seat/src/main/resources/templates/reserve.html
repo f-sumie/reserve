@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/reserve.css}" rel="stylesheet">
+<title>予約画面</title>
+</head>
+<body>
+<h1></h1>
+<h2>席の予約</h2>
+
+<div class="box">
+<span th:text="${loginUser.getUserId}"></span>
+<span th:text="${loginUser.getUserName}">さん</span>
+</div>
+
+<div class="flex-container">
+<table>
+	<table border="1" align="center" style="border-collapse: collapse">
+  <tr>
+	
+	<th>ID</th>
+    <th>席番号</th>
+	<th>空</th>
+	<th>予約者ID</th>
+	<th></th>
+	<th></th>
+	<th>予約日時</th>
+	
+  </tr>
+  
+   <tr th:each="seat : ${seats}" th:object="${seat}">
+	<td th:text="*{seatId}"></td>
+	<td th:text="*{seatNum}"></td>
+	<td th:if="*{reserve}">
+		<span>✕</span>
+	</td>
+	<td th:unless="*{reserve}">
+		<span>〇</span>
+	</td>
+	<td th:text="*{userId}"></td>
+	
+	<td><a th:href="@{/check/{seatId}(seatId=*{seatId})}">予約 </a></td>
+	<td><a th:href="@{/check2/{seatId}(seatId=*{seatId})}">キャンセル</a></td>
+	<td th:text="*{dateTime}"></td>
+   </tr>
+</table><br>
+
+<table>
+	<table border="1"   style="border-collapse: collapse">
+   <tr>
+   	 <th>ID</th>
+     <th>名前</th>
+   </tr>
+
+    <tr th:each="user : ${users}" th:object="${user}">
+	   <td th:text="*{userId}"></td>
+	   <td th:text="*{userName}"></td>
+    </tr>
+ </table>
+ </divclass>
+ 
+<br><br> <a href="/login">ログアウト</a>
+</body>
+</html>

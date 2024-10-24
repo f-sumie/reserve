@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>確認画面</title>
+</head>
+<body>
+
+<h2>確認画面</h2>
+
+<form th:action="@{/result/{seatId}(seatId=*{seatId})}" th:object="${SeatDto}" method="post">
+
+<input th:value="*{seatId}"  name="seatId" required><br>	
+	
+<input type="hidden" th:field="*{seatNum}" name="seatNum" required><br>
+
+<input type="hidden" th:field="*{reserve}" name="reserve" required><br>
+
+<br><input type="submit" value="OK"><br><br>
+</form>
+<a href="/reserve">一覧に戻る</a>
+
+</body>
+</html>
+</html>

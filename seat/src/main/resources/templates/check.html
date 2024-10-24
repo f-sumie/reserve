@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>予約確認画面</title>
+</head>
+<body>
+
+<h2>予約確認画面</h2>
+
+<form th:action="@{/result/{seatId}(seatId=*{seatId})}" th:object="${SeatDto}" method="post">
+
+<span th:text="${loginUser.getUserName} + ' さん'"></span><br>
+<span th:text="${seatId} + ' 番で予約しますか？'"></span>
+
+<input type="hidden" th:field="*{seatId}" name="seatId"><br>	
+<input type="hidden" th:field="*{seatNum}" name="seatNum">
+<input type="hidden" th:field="*{reserve}" name="reserve">
+<input type="hidden" th:field="*{userId}" name="userId">
+<input type="hidden" th:field="*{dateTime}" name="dateTime">
+
+
+
+<br><input type="submit" value="OK"><br><br>
+</form>
+<a href="/reserve">一覧に戻る</a>
+
+</body>
+</html>
